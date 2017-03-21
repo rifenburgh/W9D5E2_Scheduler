@@ -19,6 +19,52 @@ router.get('/students', (req, res, next) => {
   });
 });
 
+router.post('/students', (req, res, next) => {
+  const newItem         = new Student({
+    name:               req.body.name,
+    instrument:         req.body.instrument
+  });
+});
+
+
+router.get('/teachers', (req, res, next) => {
+  Teacher.find((err, items) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    console.log(items);
+    res.json(items);
+  });
+});
+
+router.post('/teachers', (req, res, next) => {
+  const newItem         = new Teacher({
+    name:               req.body.name,
+    instrument:         req.body.instrument
+  });
+});
+
+
+router.get('/schedule', (req, res, next) => {
+  Schedule.find((err, items) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    console.log(items);
+    res.json(items);
+  });
+});
+
+router.post('/schedule', (req, res, next) => {
+  const newItem         = new Teacher({
+    name:               req.body.name,
+    instrument:         req.body.instrument
+  });
+});
+
+
 module.exports          = router;
 
 
