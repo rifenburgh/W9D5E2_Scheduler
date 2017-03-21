@@ -36,7 +36,7 @@ const index             = require('./routes/index');
 app.use('/', index);
 
 const api               = require('./routes/api-routes');
-app.use('/', api);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

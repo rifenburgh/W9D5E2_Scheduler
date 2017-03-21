@@ -8,6 +8,17 @@ const Student           = require('../models/student-model');
 const Teacher           = require('../models/teacher-model');
 const User              = require('../models/user-model');
 
+router.get('/students', (req, res, next) => {
+  Student.find((err, items) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    console.log(items);
+    res.json(items);
+  });
+});
+
 module.exports          = router;
 
 
