@@ -10,10 +10,22 @@ import { ScheduleService } from './services/schedule.service';
 import { StudentService } from './services/student.service';
 import { TeacherService } from './services/teacher.service';
 import { UserService } from './services/user.service';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { UserComponent } from './user/user.component';
+import { StudentDetailComponent } from './student-detail/student-detail.component';
+import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StudentComponent,
+    TeacherComponent,
+    ScheduleComponent,
+    UserComponent,
+    StudentDetailComponent,
+    TeacherDetailComponent
   ],
   imports: [
     BrowserModule,
