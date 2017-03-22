@@ -1,3 +1,6 @@
 <p>
   student works!
 </p>
+<div *ngFor="let item of items">
+  <a href="/students/{{ item._id }}">{{ item.name }}</a>
+</div>

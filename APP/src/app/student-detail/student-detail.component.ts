@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class StudentDetailComponent implements OnInit {
 
-  item: Object;
+  items: Object;
   errorMessage: string;
 
   constructor(
@@ -27,12 +27,13 @@ export class StudentDetailComponent implements OnInit {
 
   getDetails(id) {
     this.myService.get(id)
-      .then((apiResult => {
-        this.item = apiResult;;
+      .then((apiResult) => {
+        this.items = apiResult;
+        console.log(this.items);
       })
       .catch((err) => {
         console.log('Error ', err);
-      })
+      });
   }
 
 }

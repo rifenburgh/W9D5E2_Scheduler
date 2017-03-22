@@ -1,3 +1,4 @@
+//File NOT Finished
 import { Component, OnInit } from '@angular/core';
 import { TeacherService } from '../services/teacher.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TeacherDetailComponent implements OnInit {
 
-  item: Object;
+  items: Object = {};
   errorMessage: string;
 
   constructor(
@@ -22,16 +23,17 @@ export class TeacherDetailComponent implements OnInit {
     this.myRoute.params.subscribe((params) => {
       this.getDetails(params['id']);
     });
+
   }
   getDetails(id) {
     this.myService.get(id)
-      .then((apiResult => {
-        this.item = apiResult;
-        console.log(this.item);
+      .then((apiResult) => {
+        this.items = apiResult;
+        console.log(this.items);
       })
       .catch((err) => {
         console.log('Error ', err);
-      })
+      });
   }
 
 }

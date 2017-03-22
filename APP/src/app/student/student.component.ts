@@ -9,21 +9,26 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
+  //The item that will be queried from this component's service
+  items: Object;
+  //Store any errors that are generated
+  errorMessage:         string;
 
   constructor(
     private myService:    StudentService,
     private myRoute:      ActivatedRoute,
     private myNavigator:  Router
   ) { }
-  //The item that will be queried from this component's service
-  item: Object;
-  //Store any errors that are generated
-  errorMessage:         string;
 
   ngOnInit() {
-    this.myRoute.params.subscribe((params) => {
-      this.getDetails(param['id']);
-    });
+    // this.myRoute.params.subscribe((params) => {
+    //   this.getDetails(param['id']);
+    // });
+    this.myService.getList()
+      .then((item) => {
+        this.items = item;
+        console.log(this.items);
+      });
   }
 
 }
