@@ -41,6 +41,11 @@ const routes: Routes    = [
     component:          ScheduleComponent
   },
   {
+    path:               'login',
+    component:          UserComponent
+  },
+
+  {
     //Wildcard
     path:               '**',
     redirectTo:         ''

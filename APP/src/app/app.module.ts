@@ -10,6 +10,7 @@ import { ScheduleService } from './services/schedule.service';
 import { StudentService } from './services/student.service';
 import { TeacherService } from './services/teacher.service';
 import { UserService } from './services/user.service';
+import { SessionService } from './services/session.service';
 import { StudentComponent } from './student/student.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { ScheduleComponent } from './schedule/schedule.component';
@@ -33,7 +34,7 @@ import { TeacherDetailComponent } from './teacher-detail/teacher-detail.componen
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ScheduleService, StudentService, TeacherService, UserService],
+  providers: [ScheduleService, StudentService, TeacherService, UserService, SessionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,10 +3,15 @@ const express           = require('express');
 const mongoose          = require('mongoose');
 const router            = express.Router();
 const bodyParser        = require('body-parser');
+const passport          = require('passport');
 const Schedule          = require('../models/schedule-model');
 const Student           = require('../models/student-model');
 const Teacher           = require('../models/teacher-model');
 const User              = require('../models/user-model');
+const bcrypt            = require("bcrypt");
+const bcryptSalt        = 10;
+
+
 
 router.get('/students', (req, res, next) => {
   Student.find((err, items) => {
@@ -27,6 +32,7 @@ router.post('/students', (req, res, next) => {
 });
 
 
+
 router.get('/teachers', (req, res, next) => {
   Teacher.find((err, items) => {
     if (err) {
@@ -45,6 +51,23 @@ router.post('/teachers', (req, res, next) => {
   });
 });
 
+router.get('/teachers/:id', (req, res, next) => {
+  //Check to see if ID is a valid mongoose identified
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified ID is NOT valid.' });
+    return;
+  }
+  //Search for individual item by ID in the URL (API request)
+  Teacher.findById(req.params.id, (err, item) => {
+    if (err) {
+      res.json(err);
+      return;
+    }
+    res.json(item);
+  });
+
+
+});
 
 router.get('/schedule', (req, res, next) => {
   Schedule.find((err, items) => {
@@ -65,7 +88,91 @@ router.post('/schedule', (req, res, next) => {
 });
 
 
+//AUTHENTICATION
+
+router.post("/signup", (req, res, next) => {
+  const username        = req.body.username;
+  const password        = req.body.password;
+console.log("we're in signup");
+  if (!username || !password) {
+    res.status(400).json({ message: "Provide username and password" });
+    return;
+  }
+  console.log(username);
+  User.findOne({ username }, "username", (err, user) => {
+    if (user !== null) {
+      res.status(400).json({ message: "The username already exists" });
+      return;
+    }
+    const salt           = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass       = bcrypt.hashSync(password, salt);
+    const newUser        = User({
+      username,
+      password: hashPass
+    });
+
+    newUser.save((err) => {
+      if (err) {
+        res.status(400).json({ message: "Something went wrong" });
+      } else {
+        req.login(newUser, function(err) {
+          if (err) {
+            return res.status(500).json({
+              message: 'something went wrong :('
+            });
+          }
+          res.status(200).json(req.user);
+        });
+      }
+    });
+  });
+});
+
+router.post("/login", function (req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    console.log("USER IS " + user);
+    if (err) {
+      console.log("THERE IS AN ERROR" + err);
+      return next(err); }
+
+    // if (!user) { return res.status(401).json(info); }
+
+    req.login(user, function(err) {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({
+          message: 'something went wrong :('
+        });
+      }
+      res.status(200).json(req.user);
+    });
+  })(req, res, next);
+});
+
+
+router.post("/logout", function(req, res) {
+  req.logout();
+  res.status(200).json({ message: 'Success' });
+});
+
+router.get("/loggedin", function(req, res) {
+  if(req.isAuthenticated()) {
+    return res.status(200).json(req.user);
+  }
+  return res.status(403).json({ message: 'Unauthorized' });
+});
+//  --Use this route to manage post-logged routes--
+router.get("/private", (req, res) => {
+  if(req.isAuthenticated()) {
+    return res.json({ message: 'This is a private message' });
+  }
+  return res.status(403).json({ message: 'Unauthorized' });
+});
+
+
 module.exports          = router;
+
+
 
 
 /*

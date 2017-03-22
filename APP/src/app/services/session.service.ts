@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class SessionService {
-
+  BASE_URL: string = 'http://localhost:3000';
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -14,31 +14,32 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(`/signup`, user)
+    return this.http.post(`${this.BASE_URL}/api/signup`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    return this.http.post(`/login`, user)
+    console.log("we in.....");
+    return this.http.post(`${this.BASE_URL}/api/login`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post(`/logout`, {})
+    return this.http.post(`${this.BASE_URL}/api/logout`, {})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get(`/loggedin`)
+    return this.http.get(`${this.BASE_URL}/api/loggedin`)
       .map(res => res.json())
       .catch((err) => this.handleError(err));
   }
 
   getPrivateData() {
-    return this.http.get(`/private`)
+    return this.http.get(`${this.BASE_URL}/api/private`)
       .map(res => res.json())
       .catch(this.handleError);
   }

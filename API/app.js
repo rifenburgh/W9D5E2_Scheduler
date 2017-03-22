@@ -8,6 +8,12 @@ const layouts           = require('express-ejs-layouts');
 const mongoose          = require('mongoose');
 const dotenv            = require('dotenv');
 const cors              = require('cors');
+const passport          = require('passport');
+const LocalStrategy     = require('passport-local').Strategy;
+const User              = require('./models/user-model');
+const session           = require('express-session');
+const bcrypt            = require("bcrypt");
+
 
 dotenv.config();
 mongoose.connect(process.env.MONGODB_URI);
@@ -32,10 +38,58 @@ app.use(layouts);
 app.use(cors());
 
 
-const index             = require('./routes/index');
-app.use('/', index);
+
+//START - Authentication
+
+  passport.use(new LocalStrategy((username, password, next) => {
+    console.log("Were in local strategy");
+    User.findOne({ username }, (err, user) => {
+      if (err) {
+        return next(err);
+      }
+
+      if (!user) {
+        return next(null, false, { message: "Incorrect username" });
+      }
+
+      if (!bcrypt.compareSync(password, user.password)) {
+        return next(null, false, { message: "Incorrect password" });
+      }
+
+      return next(null, user);
+    });
+  }));
+
+  passport.serializeUser((user, cb) => {
+    cb(null, user.id);
+  });
+
+  passport.deserializeUser((id, cb) => {
+    User.findOne({ "_id": id }, (err, user) => {
+      if (err) { return cb(err); }
+      cb(null, user);
+    });
+  });
+
+app.use(session({
+  secret: "passport-local-strategy",
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 2419200000 }
+}));
+
+//These belong before the Routes are declared 
+app.use(passport.initialize());
+app.use(passport.session());
+
+//END - Authentication
+
+
+
+//const index             = require('./routes/index');
 
 const api               = require('./routes/api-routes');
+// app.use('/', api);
 app.use('/api', api);
 
 // catch 404 and forward to error handler
