@@ -1,5 +1,5 @@
 /*
-mongoimport --db W9D5E2 --collection schedules --file schedule.json --jsonArray
+mongoimport --db W9D5E2 --collection teachers --file teacher.json --jsonArray
 */
 const mongoose          = require('mongoose');
 mongoose.connect('mongodb://localhost/W9D5E2');
