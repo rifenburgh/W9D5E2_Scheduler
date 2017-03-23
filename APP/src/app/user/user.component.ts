@@ -17,6 +17,8 @@ export class UserComponent implements OnInit {
     phone: '',
     bio: '',
     email: '',
+    student: false,
+    teacher: false
 
   };
   user: any;

@@ -24,7 +24,7 @@ const app               = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// default value for title local
+// default value for title
 app.locals.title        = 'W9D5E2';
 
 // uncomment after placing your favicon in /public
@@ -60,10 +60,12 @@ app.use(cors());
   }));
 
   passport.serializeUser((user, cb) => {
+    console.log('Save to session????', user);
     cb(null, user.id);
   });
 
   passport.deserializeUser((id, cb) => {
+    console.log('Retrieve from Session????', id);
     User.findOne({ "_id": id }, (err, user) => {
       if (err) { return cb(err); }
       cb(null, user);

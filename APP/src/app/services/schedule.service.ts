@@ -15,5 +15,11 @@ export class ScheduleService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+  //Create
+  createItem(item) {
+    return this.myHttp.post(`${this.BASE_URL}/api/schedulenew`, item)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
 
 }

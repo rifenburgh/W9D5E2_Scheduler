@@ -17,6 +17,7 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { UserComponent } from './user/user.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
+import { ScheduleNewComponent } from './schedule-new/schedule-new.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TeacherDetailComponent } from './teacher-detail/teacher-detail.componen
     ScheduleComponent,
     UserComponent,
     StudentDetailComponent,
-    TeacherDetailComponent
+    TeacherDetailComponent,
+    ScheduleNewComponent
   ],
   imports: [
     BrowserModule,

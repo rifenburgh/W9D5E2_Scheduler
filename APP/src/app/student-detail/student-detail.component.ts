@@ -1,7 +1,9 @@
 //File NOT Finished
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../services/student.service';
+import { ScheduleService } from '../services/schedule.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-student-detail',
@@ -10,12 +12,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class StudentDetailComponent implements OnInit {
 
-  items: Object;
+  items: Array<any> = [];
+  person: Object = {};
   errorMessage: string;
 
   constructor(
     private myService: StudentService,
     private myRoute: ActivatedRoute,
+    private mySchedule: ScheduleService,
     private myNavigator: Router
   ) { }
 
@@ -28,7 +32,8 @@ export class StudentDetailComponent implements OnInit {
   getDetails(id) {
     this.myService.get(id)
       .then((apiResult) => {
-        this.items = apiResult;
+        this.person = apiResult;
+        this.items.push(this.person);
         console.log(this.items);
       })
       .catch((err) => {

@@ -1,6 +1,5 @@
 
 <!-- <a routerLink="/students"> Students </a> | <a routerLink="/teachers"> Teachers </a> -->
-
 <div class="row">
   <div class="col-md-1">
   </div>
@@ -16,6 +15,39 @@
           <td>Password</td>
           <td><input type="password" [(ngModel)]="formInfo.password" name="password"/></td>
         </tr>
+        <tr>
+          <td>Name</td>
+          <td><input  type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" ></td>
+        </tr>
+        <tr>
+          <td>Instrument</td>
+          <td><input  type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" ></td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><input type="text" [(ngModel)]="formInfo.location" name="location" placeholder="Miami, FL" value="Miami, FL" ></td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td><input type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="123-456-7890" ></td>
+        </tr>
+        <tr>
+          <td>email</td>
+          <td><input type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" ></td>
+        </tr>
+        <tr>
+          <td>
+            <label>Student
+            <input type="checkbox" [(ngModel)]="formInfo.student" ng-true-value="true" ng-false-value="false" name="student" placeholder="" >
+            </label>
+          </td>
+          <td>
+            <label>Teacher
+              <input type="checkbox" [(ngModel)]="formInfo.teacher" ng-true-value="true" ng-false-value="false" name="teacher" placeholder="" >
+            </label>
+          </td>
+        </tr>
+
         <tr>
           <td><button (click)="login()"> Login </button></td>
           <td><button (click)="signup()"> Sign Up </button></td>
@@ -39,28 +71,28 @@
       <button (click)="getPrivateData()"> Get private data </button>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 hidden">
     <h2>Request Student Profile</h2>
     <table>
       <tr>
         <td>Name</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" required></td>
+        <td><input  type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" required></td>
       </tr>
       <tr>
         <td>Instrument</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" required></td>
+        <td><input  type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" required></td>
       </tr>
       <tr>
         <td>Location</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.location" name="location" value="Miami, FL" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.location" name="location" value="Miami, FL" required></td>
       </tr>
       <tr>
         <td>Phone</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="123-456-7890" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="123-456-7890" required></td>
       </tr>
       <tr>
         <td>email</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" required></td>
       </tr>
       <tr>
         <td><button class="btn btn-primary">Create Request</button></td>
@@ -70,32 +102,32 @@
     </table>
 
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 hidden">
     <h2>Request Teacher Profile</h2>
     <table>
       <tr>
         <td>Name</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" required></td>
       </tr>
       <tr>
         <td>Instrument</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" required></td>
       </tr>
       <tr>
         <td>Location</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.location" name="location" value="Miami, FL" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.location" name="location" value="Miami, FL" required></td>
       </tr>
       <tr>
         <td>Phone</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="123-456-7890" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.phone" name="phone" placeholder="123-456-7890" required></td>
       </tr>
       <tr>
         <td>email</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" required></td>
       </tr>
       <tr>
         <td>bio</td>
-        <td><input [(ngModel)]="name" type="text" [(ngModel)]="formInfo.bio" name="bio"  placeholder="Describe Yourself" required></td>
+        <td><input type="text" [(ngModel)]="formInfo.bio" name="bio"  placeholder="Describe Yourself" required></td>
       </tr>
       <tr>
         <td><button class="btn btn-primary">Create Request</button></td>

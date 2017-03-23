@@ -1,4 +1,73 @@
 <p>
   teacher-detail works!
 </p>
-{{ items.name }}
+{{ items }}
+
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-5">
+    <h2>Upcoming Scheduled Classes</h2>
+      <p>Filter for Classes by User._id and slotAvailable === true.</p>
+      <p>Include Student Details</p>
+      <p>Include Cancel Class Button</p>
+      <h4>
+        Week of {{ null }}
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </h4>
+      <table class="table table-bordered">
+        <tr>
+          <td>Monday</td>
+          <td>Tuesday</td>
+          <td>Wednesday</td>
+          <td>Thursday</td>
+          <td>Friday</td>
+          <td>Saturday</td>
+          <td>Sunday</td>
+        </tr>
+        <tr>
+          <td>17:30<br>Piano<br>Susie</td>
+          <td></td>
+          <td></td>
+          <td>18:00<br>Drums<br>Billy</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+    <h2>Upcoming Open Classes</h2>
+      <p>Filter for Classes by User._id and slotAvailable === false
+      <p>Include Student Details</p>
+      <p>Include Cancel Class Button</p>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Teacher Profile</h2>
+    <table class="table table-hover" *ngFor="let item of items">
+      <tr>
+        <td>Name: </td>
+        <td>{{ item.name }}</td>
+      </tr>
+      <tr>
+        <td>Instrument: </td>
+        <td>{{ item.instrument }}</td>
+      </tr>
+      <tr>
+        <td>Phone: </td>
+        <td>{{ item.phone }}</td>
+      </tr>
+      <tr>
+        <td>Email: </td>
+        <td>{{ item.email }}</td>
+      </tr>
+      <tr>
+        <td>Bio: </td>
+        <td>{{ item.bio }}</td>
+      </tr>
+
+    </table>
+  </div>
+
+</div>

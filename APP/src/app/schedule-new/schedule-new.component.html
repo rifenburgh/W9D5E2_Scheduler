@@ -1,0 +1,38 @@
+<h3>Create a New Scheudled Class</h3>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-4">
+  <h2>Request Student Profile</h2>
+  <table>
+    <tr>
+      <td>Date</td>
+      <td><input  type="text" [(ngModel)]="formInfo.date" name="date" placeholder="Date" required></td>
+    </tr>
+    <tr>
+      <td>Time</td>
+      <td><input  type="text" [(ngModel)]="formInfo.time" name="time" placeholder="Time" required></td>
+    </tr>
+
+    <tr>
+      <td>Duration</td>
+      <td><input  type="text" [(ngModel)]="formInfo.duration" name="duration" placeholder="Duration (Minutes)" required></td>
+    </tr>
+    <tr>
+      <td>Rate</td>
+      <td><input type="text" [(ngModel)]="formInfo.rate" name="rate" required></td>
+    </tr>
+    <tr>
+      <td>Instrument</td>
+      <td><input type="text" [(ngModel)]="formInfo.instrument" name="instrument" placeholder="Instrument" required></td>
+    </tr>
+    <tr>
+      <td><button class="btn btn-primary" (click)="createNewItem(formInfo)">Create Schedule</button></td>
+      <button class="" (click)="isLoggedIn()">LoggedIn?</button>
+      <td></td>
+    </tr>
+  </table>
+  </div>
+  <div class="col-md-7">
+  </div>
+</div>

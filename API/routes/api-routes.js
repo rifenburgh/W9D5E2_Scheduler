@@ -37,6 +37,18 @@ router.post('/students', (req, res, next) => {
   });
 });
 
+router.post('/schedulenew', (req, res, next) => {
+  const newItem         = new Schedule({
+    date:               req.body.date,
+    duration:           req.body.date,
+    location:           req.body.date,
+    rate:               req.body.date,
+    instrument:         req.body.date,
+    teacher:            req.user._id
+
+
+  });
+});
 
 
 router.get('/teachers', (req, res, next) => {
@@ -64,6 +76,17 @@ router.post('/teachers', (req, res, next) => {
   });
 });
 
+router.get('/students/:id', (req, res, next) => {
+  //Check to see if ID is a valid mongoose identified
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified ID is NOT valid.'});
+    return;
+  }
+  //Search for individual item by ID in the URL (API request)
+  Student.findById(req.params.id, (err, item) => {
+    res.json(item);
+  });
+});
 
 router.get('/teachers/:id', (req, res, next) => {
   //Check to see if ID is a valid mongoose identified
@@ -79,8 +102,6 @@ router.get('/teachers/:id', (req, res, next) => {
     }
     res.json(item);
   });
-
-
 });
 
 router.get('/schedule', (req, res, next) => {
@@ -94,9 +115,19 @@ router.get('/schedule', (req, res, next) => {
   });
 });
 
+router.get('/teacherschedule', (req, res, next) => {
+  //Create Routes to seach for Current Teacher's Session ID within the Scheudle database
+
+  Schedule.Find();
+
+});
+
 router.post('/schedule', (req, res, next) => {
   const newItem         = new Teacher({
-    name:               req.body.name,
+    date:               req.body.date,
+    duration:           req.body.duration,
+    location:           req.body.location,
+    rate:               req.body.rate,
     instrument:         req.body.instrument
   });
 });
@@ -105,8 +136,18 @@ router.post('/schedule', (req, res, next) => {
 //AUTHENTICATION
 
 router.post("/signup", (req, res, next) => {
+  //Capture Signup model information from the Signup form
   const username        = req.body.username;
   const password        = req.body.password;
+  const name            = req.body.name;
+  const instrument      = req.body.instrument;
+  const phone           = req.body.phone;
+  const email           = req.body.email;
+  const location        = req.body.location;
+  const student         = req.body.student;
+  const teacher         = req.body.teacher;
+
+  console.log(req.body);
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
     return;
@@ -120,7 +161,14 @@ router.post("/signup", (req, res, next) => {
     const hashPass       = bcrypt.hashSync(password, salt);
     const newUser        = User({
       username,
-      password: hashPass
+      password: hashPass,
+      name,
+      instrument,
+      location,
+      phone,
+      email,
+      student,
+      teacher
     });
 
     newUser.save((err) => {
@@ -155,6 +203,7 @@ router.post("/login", function (req, res, next) {
           message: 'something went wrong :('
         });
       }
+      console.log('SESSSSSSIIIIIOOOOOON', req.session);
       res.status(200).json(req.user);
     });
   })(req, res, next);
@@ -167,6 +216,8 @@ router.post("/logout", function(req, res) {
 });
 
 router.get("/loggedin", function(req, res) {
+  console.log('loooggggeedd iinnnnn ????????', req.session);
+
   if(req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }

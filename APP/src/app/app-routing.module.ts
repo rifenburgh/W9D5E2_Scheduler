@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //Angular Components
-import { StudentComponent } from './student/student.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
-import { TeacherComponent } from './teacher/teacher.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
+import { ScheduleNewComponent } from './schedule-new/schedule-new.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { StudentComponent } from './student/student.component';
+import { TeacherComponent } from './teacher/teacher.component';
 import { UserComponent } from './user/user.component';
 
 
@@ -41,15 +42,20 @@ const routes: Routes    = [
     component:          ScheduleComponent
   },
   {
-    path:               'login',
-    component:          UserComponent
+    path:               'schedulenew',
+    component:          ScheduleNewComponent
   },
 
   {
-    //Wildcard
-    path:               '**',
-    redirectTo:         ''
+    path:               'login',
+    component:          UserComponent
   }
+
+  // {
+  //   //Wildcard - turned off for authenticated users
+  //   path:               '**',
+  //   redirectTo:         ''
+  // }
 
 ];
 

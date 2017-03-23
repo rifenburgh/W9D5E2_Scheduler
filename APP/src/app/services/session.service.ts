@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
+
 
 @Injectable()
 export class SessionService {
@@ -20,7 +21,8 @@ export class SessionService {
   }
 
   login(user) {
-    return this.http.post(`${this.BASE_URL}/api/login`, user)
+    let options = new RequestOptions({ withCredentials: true });
+    return this.http.post(`${this.BASE_URL}/api/login`, user, options)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -30,11 +32,14 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-
+  //{ withCredentials: true } pushes the cookie across different domains
   isLoggedIn() {
-    return this.http.get(`${this.BASE_URL}/api/loggedin`)
-      .map(res => res.json())
-      .catch((err) => this.handleError(err));
+    let options = new RequestOptions({ withCredentials: true });
+    const myObservable = this.http.get(`${this.BASE_URL}/api/loggedin`, options);
+    myObservable.map(res => res.json());
+    myObservable.catch(this.handleError);
+
+    return myObservable;
   }
 
   getPrivateData() {

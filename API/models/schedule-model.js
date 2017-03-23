@@ -7,6 +7,7 @@ const scheduleSchema    = new Schema({
   student:              { type: Schema.Types.ObjectId, ref: 'User' },
   slotAvailable:        Boolean,
   date:                 Date,
+  time:                 Date,
   duration:             Number,
   location:             String,
   rate:                 Number,
