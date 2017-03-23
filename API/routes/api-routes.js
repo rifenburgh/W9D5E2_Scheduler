@@ -107,12 +107,10 @@ router.post('/schedule', (req, res, next) => {
 router.post("/signup", (req, res, next) => {
   const username        = req.body.username;
   const password        = req.body.password;
-console.log("we're in signup");
   if (!username || !password) {
     res.status(400).json({ message: "Provide username and password" });
     return;
   }
-  console.log(username);
   User.findOne({ username }, "username", (err, user) => {
     if (user !== null) {
       res.status(400).json({ message: "The username already exists" });
@@ -144,10 +142,9 @@ console.log("we're in signup");
 
 router.post("/login", function (req, res, next) {
   passport.authenticate('local', function(err, user, info) {
-    console.log("USER IS " + user);
     if (err) {
-      console.log("THERE IS AN ERROR" + err);
-      return next(err); }
+      return next(err);
+    }
 
     // if (!user) { return res.status(401).json(info); }
 

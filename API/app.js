@@ -42,7 +42,6 @@ app.use(cors());
 //START - Authentication
 
   passport.use(new LocalStrategy((username, password, next) => {
-    console.log("Were in local strategy");
     User.findOne({ username }, (err, user) => {
       if (err) {
         return next(err);
@@ -78,7 +77,7 @@ app.use(session({
   cookie : { httpOnly: true, maxAge: 2419200000 }
 }));
 
-//These belong before the Routes are declared 
+//These belong before the Routes are declared
 app.use(passport.initialize());
 app.use(passport.session());
 
