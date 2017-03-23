@@ -9,7 +9,8 @@ const teacherSchema     = new Schema({
   location:             String,
   phone:                String,
   bio:                  String,
-  email:                String 
+  email:                String,
+  teacher:              Boolean
 
 });
 

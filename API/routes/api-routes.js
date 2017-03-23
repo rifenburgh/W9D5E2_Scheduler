@@ -27,7 +27,13 @@ router.get('/students', (req, res, next) => {
 router.post('/students', (req, res, next) => {
   const newItem         = new Student({
     name:               req.body.name,
-    instrument:         req.body.instrument
+    instrument:         req.body.instrument,
+    location:           req.body.location,
+    phone:              req.body.phone,
+    email:              req.body.email,
+    student:            true,
+    username:           user._id
+
   });
 });
 
@@ -45,11 +51,19 @@ router.get('/teachers', (req, res, next) => {
 });
 
 router.post('/teachers', (req, res, next) => {
-  const newItem         = new Teacher({
+  const newItem         = new Student({
     name:               req.body.name,
-    instrument:         req.body.instrument
+    instrument:         req.body.instrument,
+    location:           req.body.location,
+    phone:              req.body.phone,
+    email:              req.body.email,
+    bio:                req.body.bio,
+    student:            true,
+    username:           user._id
+
   });
 });
+
 
 router.get('/teachers/:id', (req, res, next) => {
   //Check to see if ID is a valid mongoose identified

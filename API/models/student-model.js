@@ -8,7 +8,8 @@ const studentSchema     = new Schema({
   instrument:           String,
   location:             String,
   phone:                String,
-  email:                String
+  email:                String,
+  student:              Boolean
 });
 
 const Student           = mongoose.model('Student', studentSchema);

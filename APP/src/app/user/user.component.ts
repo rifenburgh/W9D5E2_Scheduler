@@ -10,7 +10,14 @@ export class UserComponent implements OnInit {
   date: Object;
   formInfo = {
     username: '',
-    password: ''
+    password: '',
+    name: '',
+    instrument: '',
+    location: '',
+    phone: '',
+    bio: '',
+    email: '',
+
   };
   user: any;
   error: string;
