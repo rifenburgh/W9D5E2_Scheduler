@@ -40,16 +40,25 @@ router.post('/students', (req, res, next) => {
 router.post('/schedulenew', (req, res, next) => {
   const newItem         = new Schedule({
     date:               req.body.date,
-    duration:           req.body.date,
-    location:           req.body.date,
-    rate:               req.body.date,
-    instrument:         req.body.date,
+    duration:           req.body.duration,
+    location:           req.body.location,
+    rate:               req.body.rate,
+    instrument:         req.body.instrument,
     teacher:            req.user._id
 
-
   });
-});
+  console.log(newItem);
+  newItem.save((err) => {
+    if (err) {
+      res.status(400).json({ message: "Something went wrong" });
+    } else {
+      res.status(200).json(newItem);
+    }
+  });
 
+
+
+});
 
 router.get('/teachers', (req, res, next) => {
   Teacher.find((err, items) => {
@@ -119,6 +128,7 @@ router.get('/teacherschedule', (req, res, next) => {
   //Create Routes to seach for Current Teacher's Session ID within the Scheudle database
 
   Schedule.Find();
+
 
 });
 

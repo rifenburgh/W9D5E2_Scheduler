@@ -17,7 +17,10 @@ export class ScheduleService {
   }
   //Create
   createItem(item) {
-    return this.myHttp.post(`${this.BASE_URL}/api/schedulenew`, item)
+    const options = { withCredentials: true };
+
+    console.log('createItem', item);
+    return this.myHttp.post(`${this.BASE_URL}/api/schedulenew`, item, options)
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }

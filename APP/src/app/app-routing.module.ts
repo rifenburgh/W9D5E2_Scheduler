@@ -7,6 +7,7 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 import { ScheduleNewComponent } from './schedule-new/schedule-new.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { LandingComponent } from './landing/landing.component';
 import { StudentComponent } from './student/student.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { UserComponent } from './user/user.component';
@@ -16,6 +17,16 @@ import { UserComponent } from './user/user.component';
 const routes: Routes    = [
   {
     path:               '',
+    component:           LandingComponent
+  },
+
+  {
+    path:               'signup',
+    component:           UserComponent
+  },
+
+  {
+    path:               'login',
     component:           UserComponent
   },
 

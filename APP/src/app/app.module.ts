@@ -18,6 +18,7 @@ import { UserComponent } from './user/user.component';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { TeacherDetailComponent } from './teacher-detail/teacher-detail.component';
 import { ScheduleNewComponent } from './schedule-new/schedule-new.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ScheduleNewComponent } from './schedule-new/schedule-new.component';
     UserComponent,
     StudentDetailComponent,
     TeacherDetailComponent,
-    ScheduleNewComponent
+    ScheduleNewComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

@@ -26,7 +26,7 @@ export class ScheduleNewComponent implements OnInit {
   }
 
   createNewItem(thing) {
-    this.myService.createItem(thing)
+    this.myService.createItem(this.formInfo)
       .then((apiResult) => {
         console.log(apiResult);
       })

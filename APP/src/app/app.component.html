@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="#">{{title}}</a>
+      <a class="navbar-brand" routerLink="/">{{title}}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,7 +29,9 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/signup">Sign Up</a></li>
+
         <li *ngIf="user">Hi, {{ user._id }}</li>
 
       </ul>

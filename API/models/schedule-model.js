@@ -3,8 +3,9 @@ const mongoose          = require('mongoose');
 const Schema            = mongoose.Schema;
 
 const scheduleSchema    = new Schema({
-  teacher:              { type: Schema.Types.ObjectId, ref: 'User' },
-  student:              { type: Schema.Types.ObjectId, ref: 'User' },
+  teacher:              String,
+  // student:           { type: Schema.Types.ObjectId, ref: 'User' },
+  student:              String,
   slotAvailable:        Boolean,
   date:                 Date,
   time:                 Date,

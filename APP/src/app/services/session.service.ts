@@ -16,13 +16,17 @@ export class SessionService {
 
   signup(user) {
     return this.http.post(`${this.BASE_URL}/api/signup`, user)
+    // return this.http.post(`/api/signup`, user)
+
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    let options = new RequestOptions({ withCredentials: true });
+    const options = { withCredentials: true };
     return this.http.post(`${this.BASE_URL}/api/login`, user, options)
+    // return this.http.post(`/api/login`, user, options)
+
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -32,9 +36,9 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-  //{ withCredentials: true } pushes the cookie across different domains
+  //{ withCredentials: true } is supposed to share cookies across different domains.  It does not seem to be working.
   isLoggedIn() {
-    let options = new RequestOptions({ withCredentials: true });
+    const options = { withCredentials: true };
     const myObservable = this.http.get(`${this.BASE_URL}/api/loggedin`, options);
     myObservable.map(res => res.json());
     myObservable.catch(this.handleError);
