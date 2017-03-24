@@ -18,6 +18,7 @@ export class StudentDetailComponent implements OnInit {
   errorMessage: string;
   persons: Array<any> = [];
   calendars: Array<any> = [];
+  myCalendar: Array<any> = [];
 
   constructor(
     private myService: StudentService,
@@ -28,14 +29,17 @@ export class StudentDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.myRoute.params.subscribe((params) => {
-      this.getDetails(params['id']);
-    });
+    // this.myRoute.params.subscribe((params) => {
+    //   this.getDetails(params['id']);
+    // });
     this.mySession.isLoggedIn()
       .subscribe((user) => {
         this.person = user.json();
-    this.mySchedule.getList()
-      .then((classes) => { this.calendars = classes })//search for all of the open classes
+    //search for all of the open classes
+    this.mySchedule.availableClass()
+      .then((classes) => { this.calendars = classes })
+    this.mySchedule.myClass()
+      .then((classes) => { this.myCalendar = classes })
     })
   }
 

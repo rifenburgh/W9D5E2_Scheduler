@@ -1,12 +1,11 @@
 <p>Person {{ person._id }}</p>
+<p>Calendar {{ calendars }}</p>
 <div class="row">
   <div class="col-md-1">
   </div>
   <div class="col-md-5">
     <div class="col-md-5">
-      <h2>Upcoming Scheduled Classes</h2>
-        <p>Filter for Classes by User._id and slotAvailable === true.</p>
-        <p>Include Cancel Class Button</p>
+      <h2>Scheduled Classes</h2>
         <h4>
           Week of {{ null }}
           <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -14,48 +13,78 @@
         </h4>
         <table class="table table-bordered">
           <tr>
-            <td>Monday</td>
-            <td>Tuesday</td>
-            <td>Wednesday</td>
-            <td>Thursday</td>
-            <td>Friday</td>
-            <td>Saturday</td>
-            <td>Sunday</td>
+            <td>Date</td>
+            <td>Time</td>
+            <td>Instrument</td>
+            <td>Rate</td>
+            <td>Duration</td>
+            <td>Slot Available?</td>
+            <td>Schedule Class</td>
           </tr>
-          <tr>
-            <td>17:30<br>Piano<br>Vrusk</td>
-            <td></td>
-            <td></td>
-            <td>18:00<br>Drums<br>Jones</td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let item of myCalendar">
+            <td>{{ item.date | date:'EEE yyyyMMMdd' | uppercase}}</td>
+            <td>{{ item.date | date:'HH:MM'}}</td>
+            <td>{{ item.instrument }}</td>
+            <td>${{ item.rate }}</td>
+            <td>{{ item.duration }}</td>
+            <td>{{ item.slotAvailable }}</td>
+            <td><a href="localhost:3000/scheduledelete/{{ item.id }}"><button>❌</button></a></td>
 
           </tr>
-
         </table>
+
+        <h2>Open Classes</h2>
+          <h4>
+            Week of {{ null }}
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          </h4>
+          <table class="table table-bordered">
+            <tr>
+              <td>Date</td>
+              <td>Time</td>
+              <td>Instrument</td>
+              <td>Rate</td>
+              <td>Duration</td>
+              <td>Slot Available?</td>
+              <td>Schedule Class</td>
+            </tr>
+            <tr *ngFor="let item of calendars">
+              <td>{{ item.date | date:'EEE yyyyMMMdd' | uppercase }}</td>
+              <td>{{ item.date | date:'HH:MM'}}</td>
+              <td>{{ item.instrument }}</td>
+              <td>${{ item.rate }}</td>
+              <td>{{ item.duration }}</td>
+              <td>{{ item.slotAvailable }}</td>
+              <td><a href="localhost:3000/scheduleclass/{{ item.id }}"><button>✅</button></a></td>
+
+
+            </tr>
+          </table>
+
+
 
     </div>
 
   </div>
   <div class="col-md-6">
     <h2>Student Profile</h2>
-    <table *ngFor="let item of items">
+    <table>
       <tr>
         <td>Name: </td>
-        <td>{{ item.name}}</td>
+        <td>{{ person.name}}</td>
       </tr>
       <tr>
         <td>Instrument: </td>
-        <td>{{ item.instrument }}</td>
+        <td>{{ person.instrument }}</td>
       </tr>
       <tr>
         <td>Phone: </td>
-        <td>{{ item.phone }}</td>
+        <td>{{ person.phone }}</td>
       </tr>
       <tr>
         <td>Email: </td>
-        <td>{{ item.email }}</td>
+        <td>{{ person.email }}</td>
       </tr>
 
     </table>

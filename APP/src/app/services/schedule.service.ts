@@ -15,12 +15,19 @@ export class ScheduleService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
-  //Create
+  //Create New Calendar Item
   createItem(item) {
     const options = { withCredentials: true };
 
     console.log('createItem', item);
     return this.myHttp.post(`${this.BASE_URL}/api/schedulenew`, item, options)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
+  availableClass() {
+    //Search Schedule database for available clases
+    const options = { withCredentials: true };
+    return this.myHttp.get(`${this.BASE_URL}/api/availableclass`, options)
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
