@@ -1,7 +1,8 @@
 <p>
   teacher-detail works!
 </p>
-{{ items }}
+<p>Person: {{ person.name }}</p>
+<p>Calendars: {{ calendars }}</p>
 
 <div class="row">
   <div class="col-md-1">
@@ -18,22 +19,25 @@
       </h4>
       <table class="table table-bordered">
         <tr>
-          <td>Monday</td>
-          <td>Tuesday</td>
-          <td>Wednesday</td>
-          <td>Thursday</td>
-          <td>Friday</td>
-          <td>Saturday</td>
-          <td>Sunday</td>
+          <td>Date</td>
+          <td>Time</td>
+          <td>Instrument</td>
+          <td>Rate</td>
+          <td>Duration</td>
+          <td>Teacher ID</td>
+          <td>Slot Available?</td>
+          <td>Delete</td>
         </tr>
-        <tr>
-          <td>17:30<br>Piano<br>Susie</td>
-          <td></td>
-          <td></td>
-          <td>18:00<br>Drums<br>Billy</td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let item of calendars">
+          <td>{{ item.date | date:'EEE yyyyMMMdd'}}</td>
+          <td>{{ item.date | date:'HH:MM'}}</td>
+          <td>{{ item.instrument }}</td>
+          <td>${{ item.rate }}</td>
+          <td>{{ item.duration }}</td>
+          <td>{{ item }}</td>
+          <td>{{ item.slotAvailable }}</td>
+          <td><button routerLink="localhost:3000/scheduledelete/{{ item.id }}" class="">🚮</button></td>
+
         </tr>
       </table>
 

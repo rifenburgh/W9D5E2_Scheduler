@@ -15,7 +15,8 @@ export class ScheduleNewComponent implements OnInit {
     time:               '',
     duration:           '',
     location:           'Miami, FL',
-    instrument:         ''
+    instrument:         '',
+    slotAvailable:      false
   };
   constructor(
     private myService: ScheduleService,
@@ -24,7 +25,15 @@ export class ScheduleNewComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  mySchedule() {
+    this.myService.myClass()
+      .then((apiResult) => {
+        console.log(apiResult);
+      })
+      .catch((err) => {
+        console.log('Error while retrieving your list of classes.', err);
+      })
+  }
   createNewItem(thing) {
     this.myService.createItem(this.formInfo)
       .then((apiResult) => {
@@ -44,4 +53,5 @@ export class ScheduleNewComponent implements OnInit {
     );
 
   }
+
 }

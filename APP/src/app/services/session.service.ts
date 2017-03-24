@@ -23,10 +23,10 @@ export class SessionService {
   }
 
   login(user) {
+    //options will help support cross-domain functionality in Development enviornment
     const options = { withCredentials: true };
     return this.http.post(`${this.BASE_URL}/api/login`, user, options)
     // return this.http.post(`/api/login`, user, options)
-
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -36,13 +36,13 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-  //{ withCredentials: true } is supposed to share cookies across different domains.  It does not seem to be working.
+  
   isLoggedIn() {
+    //{ withCredentials: true } is supposed to share cookies across different domains.  It does not seem to be working.
     const options = { withCredentials: true };
     const myObservable = this.http.get(`${this.BASE_URL}/api/loggedin`, options);
     myObservable.map(res => res.json());
     myObservable.catch(this.handleError);
-
     return myObservable;
   }
 

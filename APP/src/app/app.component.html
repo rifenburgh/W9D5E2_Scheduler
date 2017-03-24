@@ -20,6 +20,8 @@
         <li><a routerLink="/teachers">Teachers</a></li>
         <li><a routerLink="/schedule">Classes</a></li>
         <li><a routerLink="/schedulenew">New Class</a></li>
+        <li><a routerLink="/myclass">My Classes</a></li>
+
 
       </ul>
       <form class="navbar-form navbar-left">
@@ -32,7 +34,7 @@
         <li><a routerLink="/login">Login</a></li>
         <li><a routerLink="/signup">Sign Up</a></li>
 
-        <li *ngIf="user">Hi, {{ user._id }}</li>
+        <li *ngIf="">Hi, {{ req.user._id }}</li>
 
       </ul>
     </div><!-- /.navbar-collapse -->

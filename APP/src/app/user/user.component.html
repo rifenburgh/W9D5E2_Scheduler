@@ -16,6 +16,10 @@
           <td><input type="password" [(ngModel)]="formInfo.password" name="password"/></td>
         </tr>
         <tr>
+          <td></td>
+          <td><button (click)="login()"> Login </button></td>
+        </tr>
+        <tr>
           <td>Name</td>
           <td><input  type="text" [(ngModel)]="formInfo.name" name="name" placeholder="Name" ></td>
         </tr>
@@ -36,11 +40,15 @@
           <td><input type="text" [(ngModel)]="formInfo.email" name="email" placeholder="Email" ></td>
         </tr>
         <tr>
+          <td>I am a: </td>
           <td>
             <label>Student
             <input type="checkbox" [(ngModel)]="formInfo.student" ng-true-value="true" ng-false-value="false" name="student" placeholder="" >
             </label>
           </td>
+        </tr>
+        <tr>
+          <td>I am a:
           <td>
             <label>Teacher
               <input type="checkbox" [(ngModel)]="formInfo.teacher" ng-true-value="true" ng-false-value="false" name="teacher" placeholder="" >
@@ -49,7 +57,7 @@
         </tr>
 
         <tr>
-          <td><button (click)="login()"> Login </button></td>
+          <td></td>
           <td><button (click)="signup()"> Sign Up </button></td>
         </tr>
 

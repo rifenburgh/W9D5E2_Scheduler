@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
+//Disable CORS in the Production environment
 if (process.env.NODE_ENV !== 'production') {
   app.use(cors({
     credentials: true,

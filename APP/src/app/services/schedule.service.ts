@@ -24,5 +24,16 @@ export class ScheduleService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+  myClass() {
+    console.log(this.BASE_URL);
+
+    const options = { withCredentials: true };
+    return this.myHttp.get(`${this.BASE_URL}/api/myclass`, options)
+      .toPromise()
+      .then(apiResponse => {
+        console.log(apiResponse);
+        return apiResponse.json();
+      })
+  }
 
 }

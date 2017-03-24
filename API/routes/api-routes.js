@@ -44,7 +44,8 @@ router.post('/schedulenew', (req, res, next) => {
     location:           req.body.location,
     rate:               req.body.rate,
     instrument:         req.body.instrument,
-    teacher:            req.user._id
+    teacher:            req.user._id,
+    slotAvailable:      false
 
   });
   console.log(newItem);
@@ -55,9 +56,19 @@ router.post('/schedulenew', (req, res, next) => {
       res.status(200).json(newItem);
     }
   });
+});
 
-
-
+router.get('/myclass', (req, res, nextd) => {
+  //Return list of classes for logged in Teacher
+  Schedule.find({ 'teacher': req.user._id }, ((err, items) => {
+      if (err) {
+        res.json(err);
+        return;
+      }
+      return res.json(items);
+      console.log(items);
+    })
+  );
 });
 
 router.get('/teachers', (req, res, next) => {

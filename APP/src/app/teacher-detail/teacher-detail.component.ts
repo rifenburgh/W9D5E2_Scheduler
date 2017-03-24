@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { TeacherService } from '../services/teacher.service';
 import { ScheduleService } from '../services/schedule.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SessionService } from '../services/session.service';
+
 
 @Component({
   selector: 'app-teacher-detail',
@@ -14,19 +16,27 @@ export class TeacherDetailComponent implements OnInit {
   items: Array<any> = [];
   person: Object = {};
   errorMessage: string;
+  persons: Array<any> = [];
+  calendars: Array<any> = [];
 
   constructor(
     private myService: TeacherService,
     private myRoute: ActivatedRoute,
     private mySchedule: ScheduleService,
-    private myNavigator: Router
+    private myNavigator: Router,
+    private mySession: SessionService
   ) { }
 
   ngOnInit() {
-    this.myRoute.params.subscribe((params) => {
-      this.getDetails(params['id']);
-
-    });
+    // this.myRoute.params.subscribe((params) => {
+    //   this.getDetails(params['id']);
+    // });
+      this.mySession.isLoggedIn()
+        .subscribe( (user) => {
+          this.person = user.json();
+          this.mySchedule.myClass()
+            .then( (classes) => { this.calendars = classes })
+         } )
 
   }
   getDetails(id) {
