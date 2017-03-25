@@ -180,11 +180,30 @@ router.delete('/userdelete/:id', (req, res, next) => {
   });
 });
 
-router.delete('/scheduledelete/:id', (req, res, next) => {
+router.post('/scheduleregister/:id', (req, res, next) => {
+  // Add Student to Scheduled Class and change slotAvailable flag to false
+  Schedule.findById ({ _id: req.params.id }, err, tank => {
+    if(err) {
+      res.json('schedule-register-apiRoutes', err);
+      return;
+    }
+    const item = req.user._id;
+    tank.student = item;
+    tank.save((err, updatedSchedule) => {
+      if(err) {
+        return err.json();
+      }
+      res.send(updatedSchedule);
+    });
+    res.json({ message: 'The student has registered for this class. '});
+  });
+});
+
+router.post('/scheduledelete/:id', (req, res, next) => {
   //Check to see if ID is a valid Mongoose identification
-  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    res.status(400).json({ message: 'Specified ID is NOT valid.' });
-  }
+  // if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+  //   res.status(400).json({ message: 'Specified ID is NOT valid.' });
+  // }
   Schedule.remove({ _id: req.params.id }, (err) => {
     if(err) {
       res.json(err);

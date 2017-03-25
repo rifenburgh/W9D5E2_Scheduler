@@ -48,10 +48,10 @@ const routes: Routes    = [
     component:           StudentDetailComponent
   },
 
-  {
-    path:               'students/:id',
-    component:           StudentDetailComponent
-  },
+  // {
+  //   path:               'students/:id',
+  //   component:           StudentDetailComponent
+  // },
 
   {
     path:               'schedule',

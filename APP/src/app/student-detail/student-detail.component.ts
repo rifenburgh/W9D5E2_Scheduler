@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../services/session.service';
 
 
+
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
@@ -56,18 +57,31 @@ export class StudentDetailComponent implements OnInit {
   }
 
   //Delete Indiviudal Item
-  delete(id) {
-    if(!window.confirm('Are you sure you want to delete this project?')) {
-      return;
-    }
-    console.log('delete-student-detail', this.items);
-    this.myService.delete(id)// Delete Component Function
-      .then(() = {
-        this.myNavigator(['']);
+  deleteSchedule(id) {
+    // if(!window.confirm('Are you sure you want to delete this project?')) {
+    //   return;
+    // }
+    console.log('delete-student-detail', id);
+    this.mySchedule.delete(id)// Delete Component Function
+      .then((apiResult) => {
+        // this.myNavigator.navigate(['/']);
       })
+        // this.myNavigator(['']);
+
       .catch((err) => {
         console.log('There was an error deleting htis item.');
       });
+  }
+  scheduleRegister(item) {
+
+    // console.log('scheduleRegister', item);
+    // this.mySchedule.register(item)
+    //   .then((apiResult) => {
+    //
+    //   })
+    //   .catch((err) => {
+    //     console.log('There was an issue registering for this class.');
+    //   });
   }
 
 

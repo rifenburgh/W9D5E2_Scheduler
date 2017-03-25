@@ -42,6 +42,35 @@ export class ScheduleService {
         return apiResponse.json();
       })
   }
-  
+
+  delete(item) {
+    const options = { withCredentials: true };
+    console.log('delete-schedule', item);
+    return this.myHttp.post(`${this.BASE_URL}/api/scheduledelete/${item}`, options)
+      .toPromise()
+      .then(apiResponse => {
+        console.log('delete-schedule-apiReponse', apiResponse);
+
+        return apiResponse.json();
+      })
+      .catch((err) => {
+        console.log('delete-schedule-apiResponse error', err);
+      })
+  }
+
+  register(item) {
+  //   const options = { withCredentials: true };
+  //   //Student to register to a class
+  //   return this.myHttp.post(`${this.BASE_URL}/api/scheduleregister/${item}`, options);
+  //     .toPromise()
+  //     .then(apiResponse => {
+  //       console.log('schedule-register', apiResponse);
+  //       return apiResponse.json();
+  //     })
+  //     .catch((err) => {
+  //       console.log('schedule-register-error', err);
+  //     })
+  return;
+  }
 
 }
