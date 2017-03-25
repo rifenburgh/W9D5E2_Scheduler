@@ -20,6 +20,11 @@ export class StudentService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+  delete(id) {
+    return this.myHttp.delete(`${this.BASE_URL}/api/userdelete/${id}`)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
   /*
   remove(id) {
     return this.myHttp.delete(`${this.BASE_URL}/api/students/${id}`)

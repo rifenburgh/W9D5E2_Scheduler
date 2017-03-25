@@ -28,7 +28,7 @@
             <td>${{ item.rate }}</td>
             <td>{{ item.duration }}</td>
             <td>{{ item.slotAvailable }}</td>
-            <td><a href="localhost:3000/scheduledelete/{{ item.id }}"><button>❌</button></a></td>
+            <td><a href="localhost:3000/scheduledelete/{{ item.id }}"><button (click)="delete(item.id)">❌</button></a></td>
 
           </tr>
         </table>

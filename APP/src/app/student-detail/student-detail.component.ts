@@ -55,4 +55,20 @@ export class StudentDetailComponent implements OnInit {
       });
   }
 
+  //Delete Indiviudal Item
+  delete(id) {
+    if(!window.confirm('Are you sure you want to delete this project?')) {
+      return;
+    }
+    console.log('delete-student-detail', this.items);
+    this.myService.delete(id)// Delete Component Function
+      .then(() = {
+        this.myNavigator(['']);
+      })
+      .catch((err) => {
+        console.log('There was an error deleting htis item.');
+      });
+  }
+
+
 }

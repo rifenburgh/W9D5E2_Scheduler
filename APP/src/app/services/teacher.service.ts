@@ -13,12 +13,18 @@ export class TeacherService {
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
+
   get(id) {
     return this.myHttp.get(`${this.BASE_URL}/api/teachers/${id}`)
       .toPromise()
       .then(apiResponse => apiResponse.json())
   }
-  
+
+  delete(id) {
+    return this.myHttp.delete(`${this.BASE_URL}/api/userdelete/${id}`)
+      .toPromise()
+      .then(apiResponse => apiResponse.json())
+  }
 
   /*
   remove(id) {

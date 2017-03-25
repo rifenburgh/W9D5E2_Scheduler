@@ -71,6 +71,7 @@ router.get('/availableclass', (req, res, next) => {
 );
 });
 
+
 router.get('/myclass', (req, res, next) => {
   //Return list of classes for logged in Teacher
   Schedule.find({ 'teacher': req.user._id }, ((err, items) => {
@@ -165,6 +166,33 @@ router.post('/schedule', (req, res, next) => {
   });
 });
 
+router.delete('/userdelete/:id', (req, res, next) => {
+  //Check to see if ID is a valid Mongoose identification
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified ID is NOT valid.' });
+  }
+  User.remove({ _id: req.params.id }, (err) => {
+    if(err) {
+      res.json(err);
+      return;
+    }
+    res.json({ message: 'This user has been removed.' });
+  });
+});
+
+router.delete('/scheduledelete/:id', (req, res, next) => {
+  //Check to see if ID is a valid Mongoose identification
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified ID is NOT valid.' });
+  }
+  Schedule.remove({ _id: req.params.id }, (err) => {
+    if(err) {
+      res.json(err);
+      return;
+    }
+    res.json({ message: 'The schedule event hsa been removed.' });
+  });
+});
 
 //AUTHENTICATION
 
