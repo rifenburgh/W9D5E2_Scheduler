@@ -59,7 +59,7 @@
           <td>${{ item.rate }}</td>
           <td>{{ item.duration }}</td>
           <td>{{ item.slotAvailable }}</td>
-          <td><button routerLink="localhost:3000/scheduledelete/{{ item.id }}" class="">🚮</button></td>
+          <td><button routerLink="localhost:3000/scheduledelete/{{ item.id }}" class="">✅</button></td>
 
         </tr>
       </table>
@@ -84,6 +84,11 @@
       <tr>
         <td>Email: </td>
         <td>{{ person.email }}</td>
+      </tr>
+      <tr>
+        <td>Account Type: </td>
+        <td *ngIf="person.teacher === true">Teacher</td>
+        <td *ngIf="person.student === true">Student</td>
       </tr>
 
     </table>

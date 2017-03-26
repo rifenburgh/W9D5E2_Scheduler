@@ -5,3 +5,6 @@ body {
 .centerLanding {
   text-align: center;
 }
+.jumbotron {
+  margin-top: -50px;
+}
