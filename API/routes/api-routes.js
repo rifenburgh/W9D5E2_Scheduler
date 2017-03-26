@@ -71,6 +71,17 @@ router.get('/availableclass', (req, res, next) => {
 );
 });
 
+router.get('/notavailable', (req, res, next) => {
+  Schedule.find({ 'slotAvailable': false }, ((err, items) => {
+    if(err) {
+      res.json(err);
+      return;
+    }
+    console.log(items);
+    return res.json(items);
+  })
+  );
+});
 
 router.get('/myclass', (req, res, next) => {
   //Return list of classes for logged in Teacher

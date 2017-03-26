@@ -35,6 +35,11 @@ const routes: Routes    = [
     component:           TeacherComponent
   },
   {
+    path:               'teacher',
+    component:           TeacherDetailComponent
+  },
+
+  {
     path:               'myclass',
     component:           TeacherDetailComponent
   },

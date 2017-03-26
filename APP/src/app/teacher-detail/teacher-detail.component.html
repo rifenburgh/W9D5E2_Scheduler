@@ -20,7 +20,7 @@
           <td>Slot Available?</td>
           <td>Delete</td>
         </tr>
-        <tr *ngFor="let item of calendars">
+        <tr *ngFor="let item of myCalendar">
           <td>{{ item.date | date:'EEE yyyyMMMdd'}}</td>
           <td>{{ item.date | date:'HH:MM'}}</td>
           <td>{{ item.instrument }}</td>
@@ -34,6 +34,12 @@
       </table>
 
     <h2>Upcoming Open Classes</h2>
+      <h4>
+        Week of {{ null }}
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      </h4>
+
       <p>Filter for Classes by User._id and slotAvailable === false
 
       <table class="table table-bordered">
@@ -78,10 +84,6 @@
       <tr>
         <td>Email: </td>
         <td>{{ person.email }}</td>
-      </tr>
-      <tr *ngIf="person.bio.length > 1">
-        <td>Bio: </td>
-        <td>{{ person.bio }}</td>
       </tr>
 
     </table>

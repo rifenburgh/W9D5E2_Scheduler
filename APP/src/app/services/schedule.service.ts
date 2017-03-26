@@ -35,7 +35,7 @@ export class ScheduleService {
     console.log(this.BASE_URL);
 
     const options = { withCredentials: true };
-    return this.myHttp.get(`${this.BASE_URL}/api/myclass`, options)
+    return this.myHttp.get(`${this.BASE_URL}/api/notavailable`, options)
       .toPromise()
       .then(apiResponse => {
         console.log(apiResponse);

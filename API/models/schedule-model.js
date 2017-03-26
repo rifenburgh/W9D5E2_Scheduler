@@ -8,7 +8,7 @@ const scheduleSchema    = new Schema({
   student:              String,
   slotAvailable:        Boolean,
   date:                 Date,
-  time:                 Date,
+  time:                 String,
   duration:             Number,
   location:             String,
   rate:                 Number,
