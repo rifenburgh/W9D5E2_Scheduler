@@ -40,6 +40,7 @@ router.post('/students', (req, res, next) => {
 router.post('/schedulenew', (req, res, next) => {
   const newItem         = new Schedule({
     date:               req.body.date,
+    time:               req.body.time,
     duration:           req.body.duration,
     location:           req.body.location,
     rate:               req.body.rate,

@@ -1,6 +1,3 @@
-<p>
-  schedule works!
-</p>
 <div *ngFor="let item of items">
   {{ item.date }}
 </div>
@@ -13,28 +10,35 @@
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     </h4>
+
     <table class="table table-bordered">
       <tr>
-        <td>Monday</td>
-        <td>Tuesday</td>
-        <td>Wednesday</td>
-        <td>Thursday</td>
-        <td>Friday</td>
-        <td>Saturday</td>
-        <td>Sunday</td>
+        <td>Date</td>
+        <td>Time</td>
+        <td>Instrument</td>
+        <td>Rate</td>
+        <td>Duration</td>
+        <td>Slot Available?</td>
+        <td>Location</td>
+        <td>Schedule Class</td>
       </tr>
-      <tr>
-        <td>17:30<br>Piano<br>Vrusk</td>
-        <td></td>
-        <td></td>
-        <td>18:00<br>Drums<br>Jones</td>
-        <td></td>
-        <td></td>
-        <td></td>
-
+      <tr *ngFor="let item of calendars">
+        <td>{{ item.date | date:'EEE yyyyMMMdd' | uppercase }}</td>
+        <td>{{ item.date | date:'HH:MM'}}</td>
+        <td>{{ item.instrument }}</td>
+        <td>${{ item.rate }}</td>
+        <td>{{ item.duration }}</td>
+        <td>{{ item.slotAvailable }}</td>
+        <td>{{ item.location }}</td>
+        <td ><button (click)="scheduleRegister(item._id)" *ngIf="item.slotAvailable === true">✅</button></td>
       </tr>
-
     </table>
+
+
+
+
+
+
 
 
   </div>

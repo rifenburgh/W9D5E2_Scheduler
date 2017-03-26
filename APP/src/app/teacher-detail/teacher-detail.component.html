@@ -21,8 +21,8 @@
           <td>Delete</td>
         </tr>
         <tr *ngFor="let item of myCalendar">
-          <td>{{ item.date | date:'EEE yyyyMMMdd'}}</td>
-          <td>{{ item.date | date:'HH:MM'}}</td>
+          <td>{{ item.date | date:'EEE yyyyMMMdd' | uppercase }}</td>
+          <td>{{ item.time }}</td>
           <td>{{ item.instrument }}</td>
           <td>${{ item.rate }}</td>
           <td>{{ item.duration }}</td>
@@ -53,13 +53,13 @@
           <td>Delete</td>
         </tr>
         <tr *ngFor="let item of calendars">
-          <td>{{ item.date | date:'EEE yyyyMMMdd'}}</td>
-          <td>{{ item.date | date:'HH:MM'}}</td>
+          <td>{{ item.date | date:'EEE yyyyMMMdd' | uppercase }}</td>
+          <td>{{ item.time }}</td>
           <td>{{ item.instrument }}</td>
           <td>${{ item.rate }}</td>
           <td>{{ item.duration }}</td>
           <td>{{ item.slotAvailable }}</td>
-          <td><button routerLink="localhost:3000/scheduledelete/{{ item.id }}" class="">✅</button></td>
+          <td><button routerLink="localhost:3000/scheduledelete/{{ item.id }}" class="">🚮</button></td>
 
         </tr>
       </table>

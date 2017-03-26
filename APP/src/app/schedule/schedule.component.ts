@@ -1,6 +1,7 @@
 //File NOT Completed
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from '../services/schedule.service';
+import { SessionService } from '../services/session.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,9 +14,11 @@ export class ScheduleComponent implements OnInit {
   items: Object;
   //Store any errors that are generated
   errorMessage:         string;
+  calendars: Array<any> = [];
 
   constructor(
     private myService: ScheduleService,
+    private mySession: SessionService,
     private myRoute: ActivatedRoute,
     private myNavigator: Router
   ) { }
@@ -26,11 +29,10 @@ export class ScheduleComponent implements OnInit {
     // });
     this.myService.getList()
       .then((item) => {
-        this.items = item;
-        console.log(this.items);
+        this.calendars = item;
       })
   }
-  
+
   // getDetails(id) {
   //   this.myService.get(id)
   //     .then((apiRequest) => {
