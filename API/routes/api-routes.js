@@ -202,6 +202,7 @@ router.post('/scheduleregister/:id/:user', (req, res, next) => {
       return;
     }
     const item = req.params.user;
+    tank.slotAvailable = false;
     tank.student = item;
     console.log(tank.student);
     tank.save((err) => {
