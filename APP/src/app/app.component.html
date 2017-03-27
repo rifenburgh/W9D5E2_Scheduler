@@ -28,17 +28,16 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
-      <ul *ngIf="!person" class="nav navbar-nav navbar-right">
+      <ul *ngIf="true" class="nav navbar-nav navbar-right">
         <li><a routerLink="/login">Login</a></li>
         <li><a routerLink="/signup">Sign Up</a></li>
 
-        <li>Hi, {{ person.name }}</li>
       </ul>
-      <ul *ngIf="person" class="nav navbar-nav navbar-right">
+      <!-- <ul *ngIf="person.name.length > 1" class="nav navbar-nav navbar-right">
         <li><a routerLink="/">Hi, {{person.name}}</a> </li>
         <li><a routerLink="/login">Logout*</a></li>
 
-      </ul>
+      </ul> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
