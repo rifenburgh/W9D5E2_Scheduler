@@ -1,10 +1,73 @@
-body {
-  background-image: url('http://blog.musicteachershelper.com/wp-content/images/CIMG6289-31.jpg');
-}
 
 .centerLanding {
   text-align: center;
 }
 .jumbotron {
   margin-top: -50px;
+  height: 80vh;
+  background: url('https://images.unsplash.com/photo-1474432377109-8d2d5109c1d2?dpr=2&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.jumbotron h1 {
+  margin-top: 80px !important;
+}
+.col-lg-4 {
+  text-align: center;
+}
+
+.marketing hr {
+  border: 2px solid #555;
+  width: 5%;
+  margin-bottom: 40px;
+}
+
+.feature-title {
+  text-align: center;
+  color: #555;
+  font-size: 5rem;
+}
+.btn-primary {
+  color: white;
+  background-color: royalblue !important;
+}
+
+footer {
+  width: 100%;
+  background-color: #4d4d4d;
+  color: #fff;
+  text-align: center;
+  height: 100px;
+}
+/** {
+padding: 0px;
+margin: 0px;
+}*/
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
 }

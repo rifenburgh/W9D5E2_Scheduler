@@ -194,7 +194,9 @@ router.delete('/userdelete/:id', (req, res, next) => {
 
 router.post('/scheduleregister/:id', (req, res, next) => {
   // Add Student to Scheduled Class and change slotAvailable flag to false
-  Schedule.findById ({ _id: req.params.id }, err, tank => {
+  // Schedule.findById ({ _id: req.params.id }, err, tank => {
+
+  Schedule.find({ _id: req.params.id }, err, tank => {
     if(err) {
       res.json('schedule-register-apiRoutes', err);
       return;
@@ -207,7 +209,7 @@ router.post('/scheduleregister/:id', (req, res, next) => {
       }
       res.send(updatedSchedule);
     });
-    res.json({ message: 'The student has registered for this class. '});
+     return res.json({ message: 'The student has registered for this class. '});
   });
 });
 

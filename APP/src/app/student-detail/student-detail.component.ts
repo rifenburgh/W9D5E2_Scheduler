@@ -73,15 +73,17 @@ export class StudentDetailComponent implements OnInit {
       });
   }
   scheduleRegister(item) {
+    console.log('scheduleRegister', item);
+    const localItem = item;
+    console.log('localItem', item);
+      this.mySchedule.register(localItem)
+        // .toPromise()
+        .then((apiResult) => {
 
-    // console.log('scheduleRegister', item);
-    // this.mySchedule.register(item)
-    //   .then((apiResult) => {
-    //
-    //   })
-    //   .catch((err) => {
-    //     console.log('There was an issue registering for this class.');
-    //   });
+      })
+      .catch((err) => {
+        console.log('There was an issue registering for this class.');
+      });
   }
 
 

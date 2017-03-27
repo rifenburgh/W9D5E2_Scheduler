@@ -1,0 +1,8 @@
+.navbar-default {
+  background-color: royalblue;
+  border: 0px;
+  border-radius: 0px;
+}
+.navbar-default a {
+  color: white;
+}
