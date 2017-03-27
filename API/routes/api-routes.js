@@ -192,24 +192,27 @@ router.delete('/userdelete/:id', (req, res, next) => {
   });
 });
 
-router.post('/scheduleregister/:id', (req, res, next) => {
+router.post('/scheduleregister/:id/:user', (req, res, next) => {
   // Add Student to Scheduled Class and change slotAvailable flag to false
   // Schedule.findById ({ _id: req.params.id }, err, tank => {
 
-  Schedule.find({ _id: req.params.id }, err, tank => {
+  Schedule.findOne({ _id: req.params.id }, (err, tank) => {
     if(err) {
       res.json('schedule-register-apiRoutes', err);
       return;
     }
-    const item = req.user._id;
+    const item = req.params.user;
     tank.student = item;
-    tank.save((err, updatedSchedule) => {
+    console.log(tank.student);
+    tank.save((err) => {
       if(err) {
         return err.json();
       }
-      res.send(updatedSchedule);
+      res.status(200).json({ message: 'Student registered for the class.' });
+      return;
+      // res.send(updatedSchedule);
     });
-     return res.json({ message: 'The student has registered for this class. '});
+    //  return res.json({ message: 'The student has registered for this class. '});
   });
 });
 

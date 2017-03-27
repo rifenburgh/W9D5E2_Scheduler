@@ -56,23 +56,25 @@ export class ScheduleService {
       .catch((err) => {
         console.log('delete-schedule-apiResponse error', err);
       })
-      
+
   }
 
-  register(item) {
+  register(item, id) {
     const options = { withCredentials: true };
     //Student to register to a class
-    return this.myHttp.post(`${this.BASE_URL}/api/scheduleregister/${item}`, options)
+    console.log(`${this.BASE_URL}/api/scheduleregister/${item}/${id._id}`)
+    return this.myHttp.post(`${this.BASE_URL}/api/scheduleregister/${item}/${id._id}`, item, options)
       .toPromise()
       .then(apiResponse => {
         console.log('schedule-register', apiResponse);
+        console.log('user._id', id._id);
         return apiResponse.json();
       })
       .catch((err) => {
         console.log('schedule-register-error', err);
         return err.json();
       })
-  return;
+  //return;
   }
 
 }

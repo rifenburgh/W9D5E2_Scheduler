@@ -74,9 +74,10 @@ export class StudentDetailComponent implements OnInit {
   }
   scheduleRegister(item) {
     console.log('scheduleRegister', item);
-    const localItem = item;
+    const localItem = this.person;
+    // localItem = this.person._id;
     console.log('localItem', item);
-      this.mySchedule.register(localItem)
+      this.mySchedule.register(item, localItem)
         // .toPromise()
         .then((apiResult) => {
 
