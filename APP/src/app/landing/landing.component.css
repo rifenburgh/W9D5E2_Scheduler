@@ -41,6 +41,9 @@ footer {
   text-align: center;
   height: 100px;
 }
+ul {
+  text-align: left;
+}
 /** {
 padding: 0px;
 margin: 0px;
