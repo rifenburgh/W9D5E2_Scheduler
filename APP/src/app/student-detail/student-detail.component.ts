@@ -13,20 +13,19 @@ import { SessionService } from '../services/session.service';
   styleUrls: ['./student-detail.component.css']
 })
 export class StudentDetailComponent implements OnInit {
-
-  items: Array<any> = [];
-  person: Object = {};
-  errorMessage: string;
-  persons: Array<any> = [];
+  items: Array<any>     = [];
+  person: Object        = {};
+  errorMessage:         string;
+  persons: Array<any>   = [];
   calendars: Array<any> = [];
-  myCalendar: Array<any> = [];
+  myCalendar: Array<any>= [];
 
   constructor(
-    private myService: StudentService,
-    private myRoute: ActivatedRoute,
+    private myService:  StudentService,
+    private myRoute:    ActivatedRoute,
     private mySchedule: ScheduleService,
-    private myNavigator: Router,
-    private mySession: SessionService
+    private myNavigator:Router,
+    private mySession:  SessionService
   ) { }
 
   ngOnInit() {
@@ -47,7 +46,7 @@ export class StudentDetailComponent implements OnInit {
   getDetails(id) {
     this.myService.get(id)
       .then((apiResult) => {
-        this.person = apiResult;
+        this.person     = apiResult;
         this.items.push(this.person);
         console.log(this.items);
       })
@@ -75,12 +74,10 @@ export class StudentDetailComponent implements OnInit {
   scheduleRegister(item) {
     console.log('scheduleRegister', item);
     const localItem = this.person;
-    // localItem = this.person._id;
     console.log('localItem', item);
       this.mySchedule.register(item, localItem)
         // .toPromise()
         .then((apiResult) => {
-
       })
       .catch((err) => {
         console.log('There was an issue registering for this class.');

@@ -12,7 +12,7 @@ export class StudentComponent implements OnInit {
   //The item that will be queried from this component's service
   items: Object;
   //Store any errors that are generated
-  errorMessage:         string;
+  errorMessage:           string;
 
   constructor(
     private myService:    StudentService,
@@ -26,7 +26,7 @@ export class StudentComponent implements OnInit {
     // });
     this.myService.getList()
       .then((item) => {
-        this.items = item;
+        this.items        = item;
         console.log(this.items);
       });
   }

@@ -5,7 +5,6 @@ import { ScheduleService } from '../services/schedule.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SessionService } from '../services/session.service';
 
-
 @Component({
   selector: 'app-teacher-detail',
   templateUrl: './teacher-detail.component.html',
@@ -13,19 +12,19 @@ import { SessionService } from '../services/session.service';
 })
 export class TeacherDetailComponent implements OnInit {
 
-  items: Array<any> = [];
-  person: Object = {};
-  errorMessage: string;
-  persons: Array<any> = [];
+  items: Array<any>     = [];
+  person: Object        = {};
+  errorMessage:         string;
+  persons: Array<any>   = [];
   calendars: Array<any> = [];
-  myCalendar: Array<any> = [];
+  myCalendar: Array<any>= [];
 
   constructor(
-    private myService: TeacherService,
-    private myRoute: ActivatedRoute,
+    private myService:  TeacherService,
+    private myRoute:    ActivatedRoute,
     private mySchedule: ScheduleService,
-    private myNavigator: Router,
-    private mySession: SessionService
+    private myNavigator:Router,
+    private mySession:  SessionService
   ) { }
 
   ngOnInit() {
@@ -34,11 +33,11 @@ export class TeacherDetailComponent implements OnInit {
     // });
     this.mySession.isLoggedIn()
       .subscribe( (user) => {
-        this.person = user.json();
-        this.mySchedule.availableClass()
-          .then( (classes) => { this.calendars = classes })
-        this.mySchedule.myClass()
-          .then((classes) => {this.myCalendar = classes })
+      this.person = user.json();
+    this.mySchedule.availableClass()
+      .then( (classes) => { this.calendars = classes })
+    this.mySchedule.myClass()
+      .then((classes) => {this.myCalendar = classes })
      })
 
   }

@@ -162,10 +162,7 @@ router.get('/schedule', (req, res, next) => {
 
 router.get('/teacherschedule', (req, res, next) => {
   //Create Routes to seach for Current Teacher's Session ID within the Scheudle database
-
   Schedule.Find();
-
-
 });
 
 router.post('/schedule', (req, res, next) => {

@@ -17,10 +17,10 @@ export class ScheduleComponent implements OnInit {
   calendars: Array<any> = [];
 
   constructor(
-    private myService: ScheduleService,
-    private mySession: SessionService,
-    private myRoute: ActivatedRoute,
-    private myNavigator: Router
+    private myService:  ScheduleService,
+    private mySession:  SessionService,
+    private myRoute:    ActivatedRoute,
+    private myNavigator:Router
   ) { }
 
   ngOnInit() {

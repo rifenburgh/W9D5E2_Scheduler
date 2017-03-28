@@ -26,18 +26,18 @@ export class TeacherComponent implements OnInit {
     // });
     this.myService.getList()
       .then((item) => {
-        this.items = item;
+        this.items      = item;
         console.log(this.items);
       })
   }
   getDetails(id) {
     this.myService.get(id)
       .then((apiResult) => {
-        this.items = apiResult;
+        this.items      = apiResult;
         console.log(this.items);
       })
   }
-
+                        
   /*
   deleteItem() {
     if(!window.confirm('Are you sure you want to delete this item?')) {
