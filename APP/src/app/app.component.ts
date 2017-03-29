@@ -10,7 +10,7 @@ declare var $: any;
 })
 
 export class AppComponent {
-  title = 'W9D5E2';
+  title = 'Music Scheduler';
   person: Object = {};
 
   constructor(
@@ -21,6 +21,6 @@ export class AppComponent {
       .subscribe((user) => {
         this.person = user.json();
       })
-      
+
   }
 }

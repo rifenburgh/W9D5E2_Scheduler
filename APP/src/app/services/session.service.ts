@@ -6,7 +6,10 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class SessionService {
-  BASE_URL: string      = 'http://localhost:3000';
+  // BASE_URL: string      = 'http://localhost:3000';
+  BASE_URL: string      = '';
+
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -35,7 +38,7 @@ export class SessionService {
       .map(res => res.json())
       .catch(this.handleError);
   }
-                        
+
   isLoggedIn() {
     //{ withCredentials: true } is supposed to share cookies across different domains.  It does not seem to be working.
     const options       = { withCredentials: true };
