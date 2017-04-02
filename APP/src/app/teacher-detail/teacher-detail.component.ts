@@ -52,5 +52,18 @@ export class TeacherDetailComponent implements OnInit {
         console.log('Error ', err);
       });
   }
+  deleteSchedule(id) {
+    if(!window.confirm('Are you sure you want to delete this item?')) {
+      return;
+    }
+    this.mySchedule.delete(id)
+      .then((apiResult) => {
+        this.myNavigator.navigate(['/']);
+      })
+      this.myNavigator(['']);
+      .catch((err) => {
+        console.log('There was an error deleting this item.');
+      });
+  }
 
 }

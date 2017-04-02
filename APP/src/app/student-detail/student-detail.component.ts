@@ -68,7 +68,7 @@ export class StudentDetailComponent implements OnInit {
         // this.myNavigator(['']);
 
       .catch((err) => {
-        console.log('There was an error deleting htis item.');
+        console.log('There was an error deleting this item.');
       });
   }
   scheduleRegister(item) {
