@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class SessionService {
-  // BASE_URL: string      = 'http://localhost:3000';
-  BASE_URL: string      = '';
+  BASE_URL: string      = 'http://localhost:3000';
+  // BASE_URL: string      = '';
 
 
   constructor(private http: Http) { }

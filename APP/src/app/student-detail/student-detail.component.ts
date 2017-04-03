@@ -65,6 +65,7 @@ export class StudentDetailComponent implements OnInit {
       .then((apiResult) => {
         // this.myNavigator.navigate(['/']);
       })
+
         // this.myNavigator(['']);
 
       .catch((err) => {

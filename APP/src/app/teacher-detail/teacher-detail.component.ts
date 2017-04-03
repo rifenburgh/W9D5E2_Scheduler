@@ -58,12 +58,12 @@ export class TeacherDetailComponent implements OnInit {
     }
     this.mySchedule.delete(id)
       .then((apiResult) => {
-        this.myNavigator.navigate(['/']);
+        // this.myNavigator.navigate(['/']);
       })
-      this.myNavigator(['']);
+      // this.myNavigator(['']);
       .catch((err) => {
         console.log('There was an error deleting this item.');
-      });
+      })
   }
 
 }
